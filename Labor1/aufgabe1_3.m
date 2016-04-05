@@ -13,8 +13,8 @@ yvals = sorted(1:10);
 xvals = valsSorted(1:10);
 
 hold on
-title('Häufigkeiten in abfallender Reihenfolge')
-xlabel('Zeichen (sortiert)')
-ylabel('Häufigkeit')
-set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))
 bar(yvals, 'y')
+set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))
+title('Character frequency in rfc2324.txt text')
+xlabel('Character')
+ylabel('Frequency')

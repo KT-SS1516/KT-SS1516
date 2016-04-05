@@ -15,18 +15,19 @@ i = log2(1 ./ p);
 yvals = p(1:20);
 xvals = valsSorted(1:20);
 
-figure(1)
-title('Probability');
-xlabel('Zeichen (sortiert)')
-ylabel('Probability')
-set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))
+hold on
+subplot(2, 1, 1)
 bar(yvals, 'y')
+set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))
+title('Character probability in rfc2324.txt text')
+xlabel('Character')
+ylabel('Probability')
 
 yvals = i(1:20);
 
-figure(2)
-title('Informationsgehalt')
-xlabel('Zeichen (sortiert)')
-ylabel('Informationsgehalt')
-set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))
+subplot(2, 1, 2)
 bar(yvals, 'y')
+set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))
+title('Character self-information in rfc2324.txt text')
+xlabel('Character')
+ylabel('Self-information')

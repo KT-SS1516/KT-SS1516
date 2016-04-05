@@ -9,7 +9,7 @@ reps = hist(double(C{1}), double(vals));
 sorted = sort(reps, 'descend');
 
 hold on
-title('Häufigkeiten in abfallender Reihenfolge')
-xlabel('Zeichen (sortiert)')
-ylabel('Häufigkeit')
 plot(sorted, 'r')
+title('Character frequency in rfc2324.txt text')
+xlabel('Character')
+ylabel('Frequency')
