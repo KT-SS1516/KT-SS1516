@@ -1,6 +1,6 @@
 % symb: Symbols
 % p: Probabilities of occurrence
-function hd = huffmandict(symb, p)
+function hd = huffmandict_2(symb, p)
 % Sort the probabilities of occurrence
 [p_sorted, sort_index] = sort(p, 'ascend');
 % Obtain the Huffman codes for the probabilities
