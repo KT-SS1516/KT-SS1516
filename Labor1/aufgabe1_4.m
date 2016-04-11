@@ -14,7 +14,6 @@ i = log2(1 ./ p);
 
 yvals = p(1:20);
 xvals = valsSorted(1:20);
-
 hold on
 subplot(2, 1, 1)
 bar(yvals, 'y')
@@ -24,7 +23,6 @@ xlabel('Character')
 ylabel('Probability')
 
 yvals = i(1:20);
-
 subplot(2, 1, 2)
 bar(yvals, 'y')
 set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))

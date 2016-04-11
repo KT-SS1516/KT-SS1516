@@ -1,4 +1,4 @@
-function [] = aufgabe1_3(input)
+function [] = aufgabe2_3(input)
 symbols = unique(input);
 repetitions = hist(double(input), double(symbols));
 
