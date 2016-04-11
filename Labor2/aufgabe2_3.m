@@ -12,4 +12,6 @@ h = sum(prob) * i;
 shannon = shannonfanodict(symbols, prob);
 huffman = huffmandict(symbols, prob);
 
+celldisp(huffman)
+
 end
