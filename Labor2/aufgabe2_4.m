@@ -1,4 +1,7 @@
-function [] = aufgabe2_3(input)
+fileID = fopen('rfc2324.txt', 'r');
+C = textscan(fileID, '%c');
+fclose(fileID);
+input = C{1}';
 symbols = unique(input);
 repetitions = hist(double(input), double(symbols));
 
@@ -8,6 +11,8 @@ prob = repetitions ./ sum(repetitions);
 i = log2(1 ./ prob);
 % Entropy
 h = sum(prob .* i);
+% Redundancy (8 bits/char)
+r = sum(prob .* 8) - h;
 
 sh_dict = shannonfanodict(symbols, prob);
 hf_dict = huffmandict(num2cell(symbols), prob);
@@ -24,19 +29,20 @@ assert(isequal(seq, arith_dec), 'Arithmetic coding output doesn''t match input')
 assert(strcmp(char(shannon_dec)', input) == 1, 'Shannon-Fano coding output doesn''t match input');
 assert(strcmp(char(huffman_dec)', input) == 1, 'Huffman coding output doesn''t match input');
 
-fprintf('Length in bits of the message ''%s'' using the arithmetic coding: %d\n', input, length(arith_enc));
-fprintf('Length in bits of the message ''%s'' using the Shannon-Fano coding: %d\n', input, length(shannon_enc));
-fprintf('Length in bits of the message ''%s'' using the Huffman coding: %d\n', input, length(huffman_enc));
+fprintf('Length in bits of the message without using any encoding:    %d\n', length(input) * 8);
+fprintf('Length in bits of the message using the arithmetic coding:   %d\n', length(arith_enc));
+fprintf('Length in bits of the message using the Shannon-Fano coding: %d\n', length(shannon_enc));
+fprintf('Length in bits of the message using the Huffman coding:      %d\n', length(huffman_enc));
 
 % Redundancy
+r_plain = sum(prob .* 8) - h;
 r_arith = length(arith_enc) / length(input) - h;
 len_shannon = cellfun('length', sh_dict);
 r_shannon = sum(prob .* len_shannon(:, 2)') - h;
 len_huffman = cellfun('length', hf_dict);
 r_huffman = sum(prob .* len_huffman(:, 2)') - h;
 
-fprintf('Redundancy of the message ''%s'' using the arithmetic coding: %f\n', input, r_arith);
-fprintf('Redundancy of the message ''%s'' using the Shannon-Fano coding: %f\n', input, r_shannon);
-fprintf('Redundancy of the message ''%s'' using the Huffman coding: %f\n', input, r_huffman);
-
-end
+fprintf('Redundancy of the message without using any encoding:        %f\n', r_plain);
+fprintf('Redundancy of the message using the arithmetic coding:       %f\n', r_arith);
+fprintf('Redundancy of the message using the Shannon-Fano coding:     %f\n', r_shannon);
+fprintf('Redundancy of the message using the Huffman coding:          %f\n', r_huffman);
