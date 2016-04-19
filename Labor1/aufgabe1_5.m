@@ -14,14 +14,14 @@ p = sorted ./ sum(sorted);
 % Self-information
 i = log2(1 ./ p);
 % Entropy
-h = sum(p) * i;
+h = sum(p .* i);
 % Redundancy (8 bits/char)
 r = sum(p .* 8) - h;
 
 yvals = p(1:20);
 xvals = valsSorted(1:20);
 hold on
-subplot(2, 2, 1)
+subplot(2, 1, 1)
 bar(yvals, 'y')
 set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))
 title('Character probability in rfc2324.txt text')
@@ -29,25 +29,28 @@ xlabel('Character')
 ylabel('Probability')
 
 yvals = i(1:20);
-subplot(2, 2, 2)
+subplot(2, 1, 2)
 bar(yvals, 'y')
 set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))
 title('Character self-information in rfc2324.txt text')
 xlabel('Character')
 ylabel('Self-information')
 
-yvals = h(1:20);
-subplot(2, 2, 3)
-bar(yvals, 'y')
-set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))
-title('Character entropy in rfc2324.txt text')
-xlabel('Character')
-ylabel('Entropy')
+fprintf('Entropy: %f\n', h);
+fprintf('Redundancy: %f\n', r);
 
-yvals = r(1:20);
-subplot(2, 2, 4)
-bar(yvals, 'y')
-set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))
-title('Character redundancy in rfc2324.txt text')
-xlabel('Character')
-ylabel('Redundancy')
+%yvals = h(1:20);
+%subplot(2, 2, 3)
+%bar(yvals, 'y')
+%set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))
+%title('Character entropy in rfc2324.txt text')
+%xlabel('Character')
+%ylabel('Entropy')
+
+%yvals = r(1:20);
+%subplot(2, 2, 4)
+%bar(yvals, 'y')
+%set(gca, 'XTickLabel', xvals, 'XTick', 1:numel(xvals))
+%title('Character redundancy in rfc2324.txt text')
+%xlabel('Character')
+%ylabel('Redundancy')
