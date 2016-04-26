@@ -21,6 +21,7 @@ seq = changem(double(input), 1:length(symbols), symbols);
 arith_enc = arithenco(seq, repetitions);
 shannon_enc = huffmanenco(double(input), sh_dict);
 huffman_enc = huffmanenco(double(input), hf_dict);
+
 arith_dec = arithdeco(arith_enc, repetitions, length(seq));
 shannon_dec = huffmandeco(shannon_enc, sh_dict);
 huffman_dec = huffmandeco(huffman_enc, hf_dict);
