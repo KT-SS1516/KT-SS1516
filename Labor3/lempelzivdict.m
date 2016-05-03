@@ -19,4 +19,5 @@ while pos <= length(input)
         pos = pos + len;
     end
 end
+dict(length(dict), 3) = -1;
 end
