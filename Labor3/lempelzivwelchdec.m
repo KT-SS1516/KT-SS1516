@@ -6,7 +6,11 @@ entry = dict{prevcode};
 dec = entry;
 for i = 2:length(enc)
     currcode = enc(i);
-    entry = dict{currcode};
+    if currcode <= numel(dict) && ~isempty(dict{currcode})
+        entry = dict{currcode}; 
+    else
+        entry = [dict{prevcode} dict{prevcode}(1)];
+    end
     dec = [dec entry];
     ch = entry(1);
     dict{end + 1} = [dict{prevcode} ch];
