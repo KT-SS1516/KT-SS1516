@@ -18,10 +18,5 @@ end
 
 % Generates an initial dictionary with every ASCII character
 function dict = initialdict()
-dict = {};
-alphabet = char(1:256);
-% TODO: optimize
-for i = 1:length(alphabet)
-    dict{end + 1} = alphabet(i);
-end
+dict = cellstr(char(1:256)');
 end
