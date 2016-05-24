@@ -10,7 +10,7 @@ while pos <= length(plain)
     end
     if last > 0
         enc = [enc, index];
-        fprintf('%s found in i = %d (len = %d)\n', plain(pos:last), index, dict(index, 2));
+        %fprintf('%s found in i = %d (len = %d)\n', plain(pos:last), index, dict(index, 2));
         pos = pos + dict(index, 2);
     else
         fprintf('Not found any substring in the dictionary for input string %s\n', plain(pos:length(plain)));

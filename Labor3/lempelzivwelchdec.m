@@ -20,5 +20,5 @@ end
 
 % Generates an initial dictionary with every ASCII character
 function dict = initialdict()
-dict = cellstr(char(1:256)');
+dict = num2cell(char(0:255)');
 end

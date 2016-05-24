@@ -12,7 +12,7 @@ while pos <= length(input)
     if len == 0
         pos = length(input) + 1;
     else
-        fprintf('pos: %d, len: %d, str: %s\n', pos, len, input(pos:(pos+len)));
+        %fprintf('pos: %d, len: %d, str: %s\n', pos, len, input(pos:(pos+len)));
         next = input(pos + len);
         dict(i, :) = [pos, len, next];
         i = i + 1;

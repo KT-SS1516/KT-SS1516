@@ -3,6 +3,7 @@ function enc = lempelzivwelchenc(plain)
 enc = [];
 dict = initialdict();
 s = [];
+
 for i = 1:length(plain)
     ch = plain(i);
     if ~isempty(find(strcmp(dict, [s ch]), 1))
@@ -18,5 +19,5 @@ end
 
 % Generates an initial dictionary with every ASCII character
 function dict = initialdict()
-dict = cellstr(char(1:256)');
+dict = num2cell(char(0:255)');
 end
