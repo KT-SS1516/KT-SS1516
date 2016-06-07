@@ -3,4 +3,3 @@
 function s = error_syndrome(x, e, H)
 s = mod((x + e) * H', 2);
 end
-
